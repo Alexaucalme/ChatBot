@@ -53,10 +53,12 @@ for Conversation in Conversations:                                              
 
 def NettoyageTexte(Texte):                                                      # On défini NettoyageTexte qui prends un texte en paramètre
     Texte = Texte.lower()                                                       # On mets le texte en minuscule
-    Texte = re.sub(r"[]()\"\'{}_+=#@;<>:/.,%$¥$*£&?!0123456789", "", Texte)     # On enlève chaque caractère mis dans les guillemets à l'aide de re
+    Caracteres = r"[]()\"\'{}_+=#@;<>:/.,%$¥$*£&?!0123456789"                   # On créé un tableau contenant les caractères à enlever
+    for Caractere in Caracteres:                                                # On parcours ce tableau
+        Texte = Texte.replace(Caractere, '')                                    # On enleve chaque caractère
     return Texte                                                                # On retourne le texte
 
-print(NettoyageTexte("Bonjour.;"))
+print(NettoyageTexte("Bonjour.;2489HZIJFB@#°"))
 
 """
 QuestionsNettoye = []
