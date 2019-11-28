@@ -22,8 +22,8 @@ FichierConversations = open('Sources/movie_conversations.txt', 'r', encoding = '
 
 DictionnairePhrases = {}                                                        # On créé notre dictionnaire
 for Ligne in FichierDialogues:                                                  # On parcours les dialogues
-    LigneTemporaire = Ligne.split(' +++$+++ '')                                 # On sépare chaque ligne en tableau
-    if len(LigneTemporaire) == 5;:                                              # Si la longueur de la ligne est conforme
+    LigneTemporaire = Ligne.split(' +++$+++ ')                                 # On sépare chaque ligne en tableau
+    if len(LigneTemporaire) == 5:                                              # Si la longueur de la ligne est conforme
         DictionnairePhrases[LigneTemporaire[0]] = LigneTemporaire[-1]           # On ajoute au dictionnaire la phrase avec le numéro du phrase en indice
 
 # Créer une liste contenant toutes les conversations
@@ -45,6 +45,6 @@ Questions = []                                                                  
 Reponses = []                                                                   # On créé le tableau contenant les réponses
 for Conversation in Conversations:                                              # On parcours le tableau contenant les conversations
     for IndicePhrase in range(len(Conversation) - 1):                           # On parcours le tableau contenant les indices des phrases pour chaques conversations
-         Questions.append(DictionnairePhrases[Conversation[IndicePhrase]])      # On ajoute le premier indice comme questions
-         Reponse.append(DictionnairePhrases[Conversation[IndicePhrase + 1]])    # et le suivant comme réponse, ainsi une question peux être une réponse
-         
+        if Conversation[IndicePhrase] in DictionnairePhrases.keys():            # Si l'indice a bien une case dans le dictionnaire
+            Questions.append(DictionnairePhrases[Conversation[IndicePhrase]])   # On ajoute le premier indice comme questions
+            Reponses.append(DictionnairePhrases[Conversation[IndicePhrase + 1]])# et le suivant comme réponse, ainsi une question peux être une réponse
