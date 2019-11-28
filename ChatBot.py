@@ -22,8 +22,8 @@ FichierConversations = open('Sources/movie_conversations.txt', 'r', encoding = '
 
 DictionnairePhrases = {}                                                        # On créé notre dictionnaire
 for Ligne in FichierDialogues:                                                  # On parcours les dialogues
-    LigneTemporaire = Ligne.split(' +++$+++ ')                                 # On sépare chaque ligne en tableau
-    if len(LigneTemporaire) == 5:                                              # Si la longueur de la ligne est conforme
+    LigneTemporaire = Ligne.split(' +++$+++ ')                                  # On sépare chaque ligne en tableau
+    if len(LigneTemporaire) == 5:                                               # Si la longueur de la ligne est conforme
         DictionnairePhrases[LigneTemporaire[0]] = LigneTemporaire[-1]           # On ajoute au dictionnaire la phrase avec le numéro du phrase en indice
 
 # Créer une liste contenant toutes les conversations
@@ -48,3 +48,10 @@ for Conversation in Conversations:                                              
         if Conversation[IndicePhrase] in DictionnairePhrases.keys():            # Si l'indice a bien une case dans le dictionnaire
             Questions.append(DictionnairePhrases[Conversation[IndicePhrase]])   # On ajoute le premier indice comme questions
             Reponses.append(DictionnairePhrases[Conversation[IndicePhrase + 1]])# et le suivant comme réponse, ainsi une question peux être une réponse
+
+# Nettoyage des questions et des réponses en enlevent [] () {} _ + =
+
+def NettoyageTexte(Texte):                                                      # On défini NettoyageTexte qui prends un texte en paramètre
+    Texte = Texte.lower()                                                       # On mets le texte en minuscule
+    Texte = re.sub(r'[]()\"\'{}_+=#@;<>:/.,%$¥$*£&', '', Texte)                 # On enlève chaque caractère mis dans les guillemets à l'aide de re
+    return Texte                                                                # On retourne le texte
