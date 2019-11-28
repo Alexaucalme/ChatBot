@@ -53,5 +53,36 @@ for Conversation in Conversations:                                              
 
 def NettoyageTexte(Texte):                                                      # On défini NettoyageTexte qui prends un texte en paramètre
     Texte = Texte.lower()                                                       # On mets le texte en minuscule
-    Texte = re.sub(r'[]()\"\'{}_+=#@;<>:/.,%$¥$*£&', '', Texte)                 # On enlève chaque caractère mis dans les guillemets à l'aide de re
+    Texte = re.sub(r"[]()\"\'{}_+=#@;<>:/.,%$¥$*£&?!0123456789", "", Texte)     # On enlève chaque caractère mis dans les guillemets à l'aide de re
     return Texte                                                                # On retourne le texte
+
+print(NettoyageTexte("Bonjour.;"))
+
+"""
+QuestionsNettoye = []
+ReponsesNettoye = []
+
+for Question in Questions:
+    QuestionsNettoye.append(NettoyageTexte(Question))
+
+for Reponse in Reponses:
+    ReponsesNettoye.append(NettoyageTexte(Reponse))
+
+# Créé un dictionnaire qui associer à chaque mot le nombre de fois où il apparait
+
+DictionnaireMots = {}
+
+for Question in QuestionsNettoye:
+    for Mot in Question.split():
+        if Mot not in DictionnaireMots:
+            DictionnaireMots[Mot] = 1
+        else:
+            DictionnaireMots[Mot] += 1
+
+for Reponse in ReponsesNettoye:
+    for Mot in Reponse.split():
+        if Mot not in DictionnaireMots:
+            DictionnaireMots[Mot] = 1
+        else:
+            DictionnaireMots[Mot] += 1
+"""
