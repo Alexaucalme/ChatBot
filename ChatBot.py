@@ -58,9 +58,6 @@ def NettoyageTexte(Texte):                                                      
         Texte = Texte.replace(Caractere, '')                                    # On enleve chaque caractère
     return Texte                                                                # On retourne le texte
 
-print(NettoyageTexte("Bonjour.;2489HZIJFB@#°"))
-
-"""
 QuestionsNettoye = []
 ReponsesNettoye = []
 
@@ -87,4 +84,3 @@ for Reponse in ReponsesNettoye:
             DictionnaireMots[Mot] = 1
         else:
             DictionnaireMots[Mot] += 1
-"""
