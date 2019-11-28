@@ -15,7 +15,7 @@ import time
 ### PARTIE 1 : PRE-TRAITEMENT ###
 #################################
 
-FichierDialogues = open('Sources/movie_lines_traduit.txt', 'r', encoding = 'utf-8', errors = 'ignore').read().split('\n')
+FichierDialogues = open('Sources/dialogues_fr.txt', 'r', encoding = 'utf-8', errors = 'ignore').read().split('\n')
 FichierConversations = open('Sources/movie_conversations.txt', 'r', encoding = 'utf-8', errors = 'ignore').read().split('\n')
 
 # Créer un dictionnaire pour associer chaque phrase à son ID
