@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Nov  7 18:32:14 2019
+Créé le Jeudi 7 Novembre 2019
 
-@author: alexaucalme
+@author: Alexandre Monroche
 """
 
-import numpy as np
+import numpy as np                                                              # On importe les bibliotèques nécessaires
 import tensorflow as tf
 import re
 import time
@@ -14,7 +14,7 @@ import time
 #################################
 ### PARTIE 1 : PRE-TRAITEMENT ###
 #################################
-
+                                                                                # On lit les fichiers contenant les phrases des films et les conversations
 FichierDialogues = open('Sources/dialogues_fr.txt', 'r', encoding = 'utf-8', errors = 'ignore').read().split('\n')
 FichierConversations = open('Sources/movie_conversations.txt', 'r', encoding = 'utf-8', errors = 'ignore').read().split('\n')
 
@@ -58,27 +58,27 @@ def NettoyageTexte(Texte):                                                      
         Texte = Texte.replace(Caractere, '')                                    # On enleve chaque caractère
     return Texte                                                                # On retourne le texte
 
-QuestionsNettoye = []
-ReponsesNettoye = []
+QuestionsNettoye = []                                                           # On créé un nouveau tableau pour les questions nettoyées
+ReponsesNettoye = []                                                            # On créé un nouveau tableau pour les réponses nettoyées
 
-for Question in Questions:
-    QuestionsNettoye.append(NettoyageTexte(Question))
+for Question in Questions:                                                      # On parcourt le tableau des questions
+    QuestionsNettoye.append(NettoyageTexte(Question))                           # On passe chaque question dans la fonction NettoyageTexte pour la nettoyer
 
-for Reponse in Reponses:
+for Reponse in Reponses:                                                        # Idem pour les réponses
     ReponsesNettoye.append(NettoyageTexte(Reponse))
 
 # Créé un dictionnaire qui associer à chaque mot le nombre de fois où il apparait
 
-DictionnaireMots = {}
+DictionnaireMots = {}                                                           # On créé le dictionnaire
 
-for Question in QuestionsNettoye:
-    for Mot in Question.split():
-        if Mot not in DictionnaireMots:
-            DictionnaireMots[Mot] = 1
-        else:
-            DictionnaireMots[Mot] += 1
+for Question in QuestionsNettoye:                                               # On parcours le tableau des questions nettoyées
+    for Mot in Question.split():                                                # On parcours chaque mot de la question "spliter"
+        if Mot not in DictionnaireMots:                                         # Si le mot n'est pas dans le Dictionnaire
+            DictionnaireMots[Mot] = 1                                           # On le place dans le dictionnaire avec une itération
+        else:                                                                   # Sinon
+            DictionnaireMots[Mot] += 1                                          # On ajoute une itération au mot trouvé
 
-for Reponse in ReponsesNettoye:
+for Reponse in ReponsesNettoye:                                                 # Idem pour les réponses
     for Mot in Reponse.split():
         if Mot not in DictionnaireMots:
             DictionnaireMots[Mot] = 1
