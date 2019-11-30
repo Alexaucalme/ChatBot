@@ -53,7 +53,7 @@ for Conversation in Conversations:                                              
 
 def NettoyageTexte(Texte):                                                      # On défini NettoyageTexte qui prends un texte en paramètre
     Texte = Texte.lower()                                                       # On mets le texte en minuscule
-    Caracteres = r"[]()\"\'{}_+=#@;<>:/.,%$¥$*£&?!0123456789"                   # On créé un tableau contenant les caractères à enlever
+    Caracteres = r"[]()\"\'{}_+=#@;<>:/.,%$¥$*£&?!0123456789-"                   # On créé un tableau contenant les caractères à enlever
     for Caractere in Caracteres:                                                # On parcours ce tableau
         Texte = Texte.replace(Caractere, '')                                    # On enleve chaque caractère
     return Texte                                                                # On retourne le texte
@@ -67,7 +67,7 @@ for Question in Questions:                                                      
 for Reponse in Reponses:                                                        # Idem pour les réponses
     ReponsesNettoye.append(NettoyageTexte(Reponse))
 
-# Créé un dictionnaire qui associer à chaque mot le nombre de fois où il apparait
+# Créé un dictionnaire qui associe à chaque mot le nombre de fois où il apparait
 
 DictionnaireMots = {}                                                           # On créé le dictionnaire
 
@@ -84,3 +84,5 @@ for Reponse in ReponsesNettoye:                                                 
             DictionnaireMots[Mot] = 1
         else:
             DictionnaireMots[Mot] += 1
+
+# 
