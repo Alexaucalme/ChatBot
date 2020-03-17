@@ -1,0 +1,5 @@
+- Récupérer les corpus anglais et français et le mettre dans le ChatBot.
+
+- Récupérer le Cornell Movie Dialog et le mettre dans le ChatBot.
+
+- Faire une interface de communication avec la voix.
